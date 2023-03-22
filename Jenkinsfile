@@ -10,13 +10,13 @@ pipeline {
                bat 'mvn clean install'
            }
        }
-       stage('Docker Config Server'){
+       stage('Docker Build Config Server'){
            steps{
                bat 'docker build -t vilastarte/config-server:latest .'
            }
        }
        
-       stage('Push Docker image config server'){
+       stage('Docker push config server'){
            steps{
                script{
                    withCredentials([string(credentialsId: 'docker_hub_pwd', variable: 'docker_hub_pwd')]) {
@@ -35,13 +35,13 @@ pipeline {
                bat 'mvn clean install'
            }
        }
-       stage('Docker Naming Server'){
+       stage('Docker Build Naming Server'){
            steps{
                bat 'docker build -t vilastarte/naming-server:latest .'
            }
        }
        
-       stage('Push Docker image naming server'){
+       stage('Docker push naming server'){
            steps{
                script{
                    withCredentials([string(credentialsId: 'docker_hub_pwd', variable: 'docker_hub_pwd')]) {
@@ -60,13 +60,13 @@ pipeline {
                bat 'mvn clean install'
            }
        }
-       stage('Docker api-gateway'){
+       stage('Docker build api-gateway'){
            steps{
                bat 'docker build -t vilastarte/api-gateway:latest .'
            }
        }
        
-       stage('Push Docker image naming server'){
+       stage('Docker Push API Gateway'){
            steps{
                script{
                    withCredentials([string(credentialsId: 'docker_hub_pwd', variable: 'docker_hub_pwd')]) {
@@ -85,13 +85,13 @@ pipeline {
                bat 'mvn clean install'
            }
        }
-       stage('Docker api-gateway'){
+       stage('Docker Build Sal Service'){
            steps{
                bat 'docker build -t vilastarte/sal-service:latest .'
            }
        }
        
-       stage('Push Docker image naming server'){
+       stage('Docker Push Sal Service'){
            steps{
                script{
                    withCredentials([string(credentialsId: 'docker_hub_pwd', variable: 'docker_hub_pwd')]) {
@@ -110,13 +110,13 @@ pipeline {
                bat 'mvn clean install'
            }
        }
-       stage('Docker api-gateway'){
+       stage('Docker build day-service'){
            steps{
                bat 'docker build -t vilastarte/day-service:latest .'
            }
        }
        
-       stage('Push Docker image naming server'){
+       stage('Docker Push Day Service'){
            steps{
                script{
                    withCredentials([string(credentialsId: 'docker_hub_pwd', variable: 'docker_hub_pwd')]) {
